@@ -1,73 +1,108 @@
 {
+  "$schema": "https://raw.githubusercontent.com/sec-o-simple/sec-o-simple/main/docs/config-schema.json",
   "template": {
+    "document-information.title": "Demo Security Advisory",
+    "document-information.title.readonly": false,
+    "document-information.id.placeholder": "DEMO-SA-2026-1",
+    "document-information.tracking.status": "final",
     "document-information.language": "en",
-    "document-information.id": "demo-id-2025-",
+
+    "document-information.tlp.label": "AMBER",
+    "document-information.tlp.label.placeholder": "Select TLP label",
+
+    "document-information.notes.default": {
+      "category": "faq"
+    },
+
     "document-information.notes": [
-      {
-        "id": "summary",
-        "category": "summary",
-        "title": "Demo summary",
-        "content": "This is a demo summary"
-      },
       {
         "id": "legaldisclaimer",
         "category": "legal_disclaimer",
         "title": "Legal Disclaimer",
-        "content": "This a demo legal disclaimer, that can't be removed",
+        "content": "This is an example legal disclaimer",
         "readonly": true
       },
       {
-        "id": "legaldisclaimer",
-        "category": "legal_disclaimer",
-        "title": "Legal Disclaimer",
-        "content": "This a demo legal disclaimer, that can be removed",
-        "readonly": false
+        "id": "description",
+        "category": "description",
+        "title": "Document Description",
+        "content.placeholder": "Enter your description here"
       }
     ],
-    
-    "document-information.publisher.name": "Demo publisher",
-    "document-information.publisher.category": "discoverer",
+
+    "document-information.notes_templates": [
+      {
+        "readonly": true,
+        "id": "information_template_ro",
+        "category": "general",
+        "title": "General Information",
+        "content": "This is a general information as read only template."
+      },
+      {
+        "readonly": false,
+        "id": "information_template_rw",
+        "category": "general",
+        "title": "General Information",
+        "content": "This is a general information as editable template."
+      }
+    ],
+
+    "document-information.publisher.readonly": true,
+    "document-information.publisher.name": "Sec-O-Simple demo publisher",
+
+    "document-information.publisher.category": "other",
     "document-information.publisher.namespace": "https://publisher.example.org/",
     "document-information.publisher.contactDetails": "Some contact details",
+    "document-information.publisher.contactDetails.readonly": true,
     "document-information.publisher.issuingAuthority": "Example authority",
 
     "document-information.references": [
       {
-        "id": "examplereference",
+        "id": "example_external_reference",
         "summary": "Example Reference",
-        "url": "https://example.com"
+        "url": "https://example.com",
+        "category": "external"
+      },
+      {
+        "id": "example_internal_reference",
+        "summary": "Example Reference",
+        "url": "https://example.com",
+        "category": "internal"
       }
     ],
-    
+
+    "product_families": [
+      {
+        "id": "family1",
+        "name": "Product Family A",
+        "subFamily": {
+          "id": "subfamily1",
+          "name": "Product Subfamily A"
+        }
+      }
+    ],
+
     "products": [
       {
-        "readonly": false,
+        "readonly": true,
         "id": "vendor1",
         "category": "vendor",
         "name": "Example vendor",
-        "description": "",
         "subBranches": [
           {
             "id": "product1",
-            "readonly": false,
+            "readonly": true,
             "category": "product_name",
             "name": "Product A",
             "description": "",
+            "type": "Software",
+            "familyId": "family1",
             "subBranches": [
               {
                 "id": "version1",
-                "readonly": false,
+                "readonly": true,
                 "category": "product_version",
                 "name": "1.0.0",
-                "description": "Initial product version",
-                "subBranches": []
-              },
-              {
-                "id": "version1",
-                "readonly": false,
-                "category": "product_version",
-                "name": "1.1.0",
-                "description": "Initial product version",
                 "subBranches": []
               }
             ]
@@ -76,25 +111,63 @@
       }
     ],
 
+    "vulnerabilities.notes.default": {
+      "title": "description",
+      "content": "This is a description of the vulnerability.",
+      "category": "legal_disclaimer"
+    },
+
+    "vulnerabilities.products.default": {
+      "status": "known_affected"
+    },
+
+    "vulnerabilities.remediations.default": {
+      "category": "workaround"
+    },
+
     "vulnerabilities": [
       {
         "id": "v1",
-        "readonly": false,
-        "cve": "CVE-9999-11111",
-        "cwe": "CWE1",
+        "readonly": true,
+        "cve": "CVE-2025-30073",
+        "cwe": {
+          "id": "CWE-400",
+          "name": "Uncontrolled Resource Consumption"
+        },
         "title": "Vulnerability 1",
         "notes": [
           {
-            "readonly": false,
+            "readonly": true,
             "id": "description",
             "category": "description",
             "title": "Vulnerability Description",
-            "content": "An issue was discovered in Tool. The reference assigned to transactions can be reused. When completing a payment, the first or all transactions with the same reference are completed, depending on timing. This can be used to transfer more money onto employee cards than is paid."
+            "content": "An issue was discovered in OPC cardsystems Webapp Aufwertung 2.1.0. The reference assigned to transactions can be reused. When completing a payment, the first or all transactions with the same reference are completed, depending on timing. This can be used to transfer more money onto employee cards than is paid."
           }
         ],
         "products": []
       }
+    ],
+
+    "vulnerabilities.notes_templates": [
+      {
+        "readonly": true,
+        "id": "id",
+        "category": "description",
+        "title": "Vulnerability Description",
+        "content": "This is a description of the vulnerability."
+      }
     ]
+  },
+  "productDatabase": {
+    "enabled": false,
+    "apiUrl": "http://127.0.0.1:9999",
+    "url": "http://127.0.0.1:3000"
+  },
+  "cveApiUrl": "https://cveawg.mitre.org/api/cve",
+  "exportTexts": {
+    "productDescription": {
+      "de": "Produktbeschreibung für ",
+      "en": "Product description for "
+    }
   }
 }
-
