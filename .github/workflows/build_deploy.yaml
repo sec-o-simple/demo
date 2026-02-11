@@ -36,7 +36,7 @@ jobs:
           node-version: '20'
       - run: |
             cd sec-o-simple
-            sed -i -e 's/\/.well-known/.well-known/g' ./src/utils/useConfigStore.ts
+            sed -i -e 's/\/.well-known/\/demo\/.well-known/g' ./src/utils/useConfigStore.ts
             npm ci
             npm run build
             cd ..
