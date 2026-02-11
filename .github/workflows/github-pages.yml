@@ -5,8 +5,8 @@ name: Sec-O-Simple Website
 # Run only on schedule and manually
 on:
   workflow_dispatch:
-  schedule:
-     - cron:  '37 6 * * *'
+  #schedule:
+  #   - cron:  '37 6 * * *'
 
 permissions:
   contents: write
