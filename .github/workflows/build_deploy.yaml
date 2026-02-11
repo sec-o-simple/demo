@@ -1,0 +1,72 @@
+# This syncs the GitHub Pages from the repo and presents it at https://sec-o-simple.github.io
+
+name: Sec-O-Simple-Demo
+
+# Run only on schedule and manually
+on:
+  workflow_dispatch:
+#  schedule:
+#     - cron:  '37 6 * * *'
+
+permissions:
+  contents: write
+  pages: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+      - name: Checkout sec-o-simple
+        uses: actions/checkout@v4
+        with:
+           repository: sec-o-simple/sec-o-simple
+           ref: main
+           path: sec-o-simple
+      - name: Checkout config
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: config
+      - name: Build sec-o-simple
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+        run: |
+            cd sec-o-simple
+            sed -i -e 's/\/.well-known/.well-known/g' .src/utils/useConfigStore.ts
+            npm ci
+            npm run build
+            cd ..
+      - name: Copy config files
+        run: |
+             cp -r ./config/.well-known ./sec-o-simple/dist/.well-known
+             cp _config.yaml ./sec-o-simple/dist/_config.yaml
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: sec-o-simple/dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm run build
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
