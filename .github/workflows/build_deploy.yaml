@@ -39,6 +39,7 @@ jobs:
             sed -i -e 's/\/.well-known/\/demo\/.well-known/g' ./src/utils/useConfigStore.ts
             npm ci
             npm run build
+            sed -i -e 's/\/assets/\/demo\/assets/g' ./dist/index.html
             cd ..
       - name: Copy config files
         run: |
