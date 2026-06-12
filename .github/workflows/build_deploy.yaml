@@ -5,8 +5,6 @@ name: Sec-O-Simple-Demo
 # Run only on schedule and manually
 on:
   workflow_dispatch:
-  schedule:
-     - cron:  '37 6 * * *'
 
 permissions:
   contents: write
@@ -18,22 +16,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Checkout sec-o-simple
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
            repository: sec-o-simple/sec-o-simple
            ref: main
            path: sec-o-simple
       - name: Checkout config
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: main
           path: config
       - name: Build sec-o-simple
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
       - run: |
             cd sec-o-simple
             sed -i -e 's/\/.well-known/\/demo\/.well-known/g' ./src/utils/useConfigStore.ts
@@ -46,7 +44,7 @@ jobs:
              cp -r ./config/.well-known ./sec-o-simple/dist/.well-known
              cp _config.yaml ./sec-o-simple/dist/_config.yaml
       - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v4
+        uses: crazy-max/ghaction-github-pages@v5
         with:
           target_branch: gh-pages
           build_dir: sec-o-simple/dist
