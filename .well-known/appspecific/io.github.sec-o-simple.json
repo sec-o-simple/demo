@@ -203,15 +203,6 @@
             "category": "external",
             "readonly": true
           }
-        ],
-        "products": [
-          {
-            "product_id": "prod-ver-01",
-            "status": "known_affected"
-          },{
-            "product_id": "prod-ver-02",
-            "status": "fixed"
-          }
         ]
       }
     ]
