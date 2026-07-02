@@ -16,7 +16,8 @@
 
     "document-information.title": "Demo Security Advisory",
     "document-information.title.readonly": false,
-    "document-information.id.placeholder": "DEMO-SA-2026-1",
+    "document-information.id": "DEMO-SA-2026-0001",
+    "document-information.id.placeholder": "DEMO-SA-YEAR-XXXX",
     "document-information.tracking.status": "final",
     "document-information.language": "en",
     
@@ -161,7 +162,7 @@
    "vulnerabilities.notes_templates": [
       {
         "id": "tmpl-vuln-workaround",
-        "category": "workaround",
+        "category": "general",
         "title": "Temporary Mitigation Strategy",
         "content": "Disable the affected port or interface via the firewall configuration rules.",
         "readonly": false
@@ -173,10 +174,9 @@
         "content": "Q: Is there a workaround?\nA: Yes, see the remediation section.",
         "readonly": true
       }
-    ]
-  },
+    ],
 
-    "vulnerabilities": [
+     "vulnerabilities": [
       {
         "id": "vuln-01",
         "readonly": false,
@@ -232,7 +232,8 @@
           }
         ] 
       }
-    ],
+    ]
+  },
 
   "productDatabase": {
     "enabled": false,
