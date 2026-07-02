@@ -212,25 +212,7 @@
             "product_id": "prod-ver-02",
             "status": "fixed"
           }
-        ],
-        "remediations": [
-          {
-            "id": "vuln-remediation-01",
-            "category": "workaround",
-            "details": "Temporary Mitigation Strategy",
-            "content": "Disable the affected port or interface via the firewall configuration rules.",
-            "productIds": ["prod-ver-01"]
-          }
-        ],
-        "scores": [
-          {
-            "id": "vuln-score-01",
-            "cvssVersion": "cvss_v3",
-            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-            "productIds": ["prod-ver-01"],
-            "readonly": false
-          }
-        ] 
+        ]
       }
     ]
   },
