@@ -1,0 +1,251 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sec-o-simple/sec-o-simple/main/docs/config-schema.json",
+  
+  "exportTexts": {
+    "productDescription": {
+      "en": "Product: " ,
+      "de": "Produkt: "
+    }
+  },
+  
+  "template": {
+    "required": [
+      "/document/tracking/id",
+      "/vulnerabilities/*/notes"
+    ],
+
+    "document-information.title": "Demo Security Advisory",
+    "document-information.title.readonly": false,
+    "document-information.id": "DEMO-2026-0001",
+    "document-information.id.placeholder": "DEMO-YEAR-XXXX",
+    "document-information.tracking.status": "final",
+    "document-information.language": "en",
+    
+    "document-information.aliases": [
+      "CVE-1900-98765",
+      "INTERNAL-REF-99"
+    ],
+
+    "document-information.tlp.label": "WHITE",
+    "document-information.tlp.label.placeholder": "Select TLP label",
+
+    "document-information.notes.default": {
+      "category": "description"
+    },
+
+    "document-information.notes": [
+      {
+        "id": "tmpl-doc-summary-01",
+        "category": "summary",
+        "title": "Summary",
+        "content.placeholder": "Contains a short summary of the content of the advisory.",
+        "readonly": false
+      },
+      {
+        "id": "tmpl-doc-description-01",
+        "category": "description",
+        "title": "Product Description",
+        "content.placeholder": "Contains a description of a product given in the product_tree in regard to field of application and core functionality. This SHOULD be bound to the corresponding product or product group.",
+        "readonly": false
+      },
+      {
+        "id": "legaldisclaimer",
+        "category": "legal_disclaimer",
+        "title": "License",
+        "content": "Contains the only license text of the document license.",
+        "readonly": true
+      }
+    ],
+
+    "document-information.notes_templates": [
+      {
+        "id": "template_general-01",
+        "category":	"general",
+        "content":	"As general security measures, Example Company recommends minimizing network exposure of the devices, restricting network access and following recommended security practices in order to run the devices in a protected IT environment.",
+        "title":	"General Security Measures",
+        "readonly": true
+      },
+      {
+        "id": "template_general-02",
+        "category": "description",
+        "title": "General Information",
+        "content": "This is a general information. You can't edit it.",
+        "readonly": true
+      },
+      {
+        "id": "template_detail-01",
+        "category": "details",
+        "title": "Details on product family and product",
+        "content": "This is template with details to a product family and product.",
+        "readonly": true
+      }
+    ],
+
+    "document-information.publisher.readonly": false,
+    "document-information.publisher.name": "Example Company PSIRT",
+    "document-information.publisher.category": "vendor",
+    "document-information.publisher.namespace": "https://psirt.example.org/",
+    "document-information.publisher.contactDetails": "Example Company can be reached at contact_us@example.com, or via our website at https://www.example.com/contact.",
+    "document-information.publisher.contactDetails.readonly": true,
+    "document-information.publisher.issuingAuthority": "Example Company Product Security Incident Response Team (PSIRT)",
+
+    "document-information.references": [
+      {
+        "id": "ref-01",
+        "summary": "Primary Vendor Security Blog",
+        "url": "https://vendor.example.com/blog/security-update",
+        "origin": "external"
+      },
+      {
+        "id": "ref-02",
+        "summary": "External CERT Coordination Center Report",
+        "url": "https://cert.example.com/advisories/example",
+        "origin": "external"
+      }
+    ],
+
+    "product_families": [
+      {
+        "id": "fam-operating-systems",
+        "name": "Core OS Platforms",
+        "subFamily": {
+          "id": "fam-linux-derivatives",
+          "name": "Linux-Based Distributions",
+          "subFamily": {
+            "id": "fam-embedded-linux",
+            "name": "Embedded Linux Minimal",
+            "subFamily": null
+          }
+        }
+      }
+    ],
+
+    "products": [
+      {
+        "id": "prod-vendor-01",
+        "category": "vendor",
+        "name": "Enterprise Software Corp",
+        "readonly": true,
+        "subBranches": [
+          {
+            "id": "prod-name-01",
+            "category": "product_name",
+            "familyId": "fam-operating-systems",
+            "name": "SecureOS Suite",
+            "description": "Enterprise grade operating system ecosystem.",
+            "type": "Operating System",
+            "readonly": false,
+            "subBranches": [
+              {
+                "id": "prod-ver-01",
+                "category": "product_version",
+                "name": "v12.4.1",
+                "readonly": false,
+                "subBranches": []
+              },
+                            {
+                "id": "prod-ver-02",
+                "category": "product_version",
+                "name": "v12.4.2",
+                "readonly": false,
+                "subBranches": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+
+    "vulnerabilities.notes.default": {
+      "title": "Standard Vulnerability Description",
+      "content": "This is a default summary for a vulnerability.",
+      "category": "summary"
+    },
+
+    "vulnerabilities.products.default": {
+      "status": "known_affected"
+    },
+    "vulnerabilities.remediations.default": {
+      "category": "workaround"
+    },
+    "vulnerabilities.flags.default": {
+      "label": "vulnerable_code_not_in_execute_path"
+    },
+
+   "vulnerabilities.notes_templates": [
+      {
+        "id": "tmpl-vuln-workaround",
+        "category": "general",
+        "title": "Temporary Mitigation Strategy",
+        "content": "Disable the affected port or interface via the firewall configuration rules.",
+        "readonly": false
+      },
+      {
+        "id": "tmpl-vuln-faq",
+        "category": "faq",
+        "title": "Frequently Asked Questions",
+        "content": "Q: Is there a workaround?\nA: Yes, see the remediation section.",
+        "readonly": true
+      }
+    ],
+
+     "vulnerabilities": [
+      {
+        "id": "vuln-01",
+        "readonly": false,
+        "cve": "CVE-1900-98765",
+        "title": "Buffer Overflow in Network Parser Component",
+        "cwe": {
+          "id": "CWE-120",
+          "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+        },
+       "notes": [
+          {
+            "id": "vuln-note-01",
+            "category": "description",
+            "title": "CVE Description",
+            "content": "Contains the official and unchanged CVE description for this specific vulnerability.",
+            "readonly": false
+          },
+          {
+            "id": "vuln-note-02",
+            "category": "preconditions",
+            "title": "Preconditions for Exploitation",
+            "content": "The attacker must have network access to the affected service and be able to send crafted packets.",
+            "readonly": false
+          },
+          {
+            "id": "vuln-note-03",
+            "category": "summary",
+            "title": "Vulnerability Summary",
+            "content": "This vulnerability allows remote attackers to cause a denial of service or potentially execute arbitrary code via a crafted network packet.",
+            "readonly": false
+          }
+        ],
+        "references": [
+          {
+            "id": "vuln-ref-01",
+            "summary": "Deep dive exploit analysis report",
+            "url": "https://security-research.example.com/cve-1900-98765",
+            "category": "external",
+            "readonly": true
+          },
+          {
+            "id": "vuln-ref-02",
+            "summary": "CVE Mitre Entry",
+            "url": "https://cveawg.mitre.org/api/cve/CVE-1900-98765",
+            "category": "external",
+            "readonly": true
+          }          
+        ]
+      }
+    ]
+  },
+
+  "productDatabase": {
+    "enabled": false,
+    "apiUrl": "http://127.0.0.1:9999",
+    "url": "http://127.0.0.1:3000"
+  },
+  "cveApiUrl": "https://cveawg.mitre.org/api/cve"
+}
