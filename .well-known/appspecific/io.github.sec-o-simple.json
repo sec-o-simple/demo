@@ -61,13 +61,13 @@
       {
         "id": "template_general-01",
         "category":	"general",
-        "text":	"As general security measures, Example Company recommends minimizing network exposure of the devices, restricting network access and following recommended security practices in order to run the devices in a protected IT environment.",
+        "content":	"As general security measures, Example Company recommends minimizing network exposure of the devices, restricting network access and following recommended security practices in order to run the devices in a protected IT environment.",
         "title":	"General Security Measures",
         "readonly": true
       },
       {
         "id": "template_general-02",
-        "category": "general",
+        "category": "description",
         "title": "General Information",
         "content": "This is a general information. You can't edit it.",
         "readonly": true
