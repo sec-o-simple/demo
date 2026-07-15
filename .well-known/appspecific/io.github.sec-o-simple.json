@@ -3,8 +3,8 @@
   
   "exportTexts": {
     "productDescription": {
-      "en": "Standard English product export description template.",
-      "de": "Standardisierte deutsche Produktbeschreibung für den Export."
+      "en": "Product: " ,
+      "de": "Produkt: "
     }
   },
   
@@ -16,13 +16,13 @@
 
     "document-information.title": "Demo Security Advisory",
     "document-information.title.readonly": false,
-    "document-information.id": "DEMO-SA-2026-0001",
-    "document-information.id.placeholder": "DEMO-SA-YEAR-XXXX",
+    "document-information.id": "DEMO-2026-0001",
+    "document-information.id.placeholder": "DEMO-YEAR-XXXX",
     "document-information.tracking.status": "final",
     "document-information.language": "en",
     
     "document-information.aliases": [
-      "CVE-2099-12345-ADVISORY",
+      "CVE-1900-98765",
       "INTERNAL-REF-99"
     ],
 
@@ -35,18 +35,24 @@
 
     "document-information.notes": [
       {
-        "id": "tmpl-doc-general-01",
-        "category": "general",
-        "title": "Advisory Overview",
-        "content": "This document contains vital security updates.",
-        "content.placeholder": "Enter introductory notes here...",
+        "id": "tmpl-doc-summary-01",
+        "category": "summary",
+        "title": "Summary",
+        "content.placeholder": "Contains a short summary of the content of the advisory.",
+        "readonly": false
+      },
+      {
+        "id": "tmpl-doc-description-01",
+        "category": "description",
+        "title": "Product Description",
+        "content.placeholder": "Contains a description of a product given in the product_tree in regard to field of application and core functionality. This SHOULD be bound to the corresponding product or product group.",
         "readonly": false
       },
       {
         "id": "legaldisclaimer",
         "category": "legal_disclaimer",
-        "title": "Legal Disclaimer",
-        "content": "This is an example legal disclaimer. That is added to all advisories by default. You can't edit it or remove it.",
+        "title": "License",
+        "content": "Contains the only license text of the document license.",
         "readonly": true
       }
     ],
@@ -54,6 +60,13 @@
     "document-information.notes_templates": [
       {
         "id": "template_general-01",
+        "category":	"general",
+        "text":	"As general security measures, Example Company recommends minimizing network exposure of the devices, restricting network access and following recommended security practices in order to run the devices in a protected IT environment.",
+        "title":	"General Security Measures",
+        "readonly": true
+      },
+      {
+        "id": "template_general-02",
         "category": "general",
         "title": "General Information",
         "content": "This is a general information. You can't edit it.",
@@ -69,19 +82,19 @@
     ],
 
     "document-information.publisher.readonly": false,
-    "document-information.publisher.name": "Sec-O-Simple demo publisher",
+    "document-information.publisher.name": "Example Company PSIRT",
     "document-information.publisher.category": "vendor",
-    "document-information.publisher.namespace": "https://publisher.example.org/",
-    "document-information.publisher.contactDetails": "Some contact details that is provided by the template. The user can't edit it.",
+    "document-information.publisher.namespace": "https://psirt.example.org/",
+    "document-information.publisher.contactDetails": "Example Company can be reached at contact_us@example.com, or via our website at https://www.example.com/contact.",
     "document-information.publisher.contactDetails.readonly": true,
-    "document-information.publisher.issuingAuthority": "Sec-O-Simple company",
+    "document-information.publisher.issuingAuthority": "Example Company Product Security Incident Response Team (PSIRT)",
 
     "document-information.references": [
       {
         "id": "ref-01",
         "summary": "Primary Vendor Security Blog",
         "url": "https://vendor.example.com/blog/security-update",
-        "origin": "self"
+        "origin": "external"
       },
       {
         "id": "ref-02",
@@ -180,18 +193,32 @@
       {
         "id": "vuln-01",
         "readonly": false,
-        "cve": "CVE-2026-98765",
+        "cve": "CVE-1900-98765",
         "title": "Buffer Overflow in Network Parser Component",
         "cwe": {
           "id": "CWE-120",
           "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
         },
-        "notes": [
+       "notes": [
           {
             "id": "vuln-note-01",
-            "category": "details",
-            "title": "Execution Vectors",
-            "content": "Triggered by sending a malformed packet exceeding 4096 bytes.",
+            "category": "description",
+            "title": "CVE Description",
+            "content": "Contains the official and unchanged CVE description for this specific vulnerability.",
+            "readonly": false
+          },
+          {
+            "id": "vuln-note-02",
+            "category": "preconditions",
+            "title": "Preconditions for Exploitation",
+            "content": "The attacker must have network access to the affected service and be able to send crafted packets.",
+            "readonly": false
+          },
+          {
+            "id": "vuln-note-03",
+            "category": "summary",
+            "title": "Vulnerability Summary",
+            "content": "This vulnerability allows remote attackers to cause a denial of service or potentially execute arbitrary code via a crafted network packet.",
             "readonly": false
           }
         ],
@@ -199,10 +226,17 @@
           {
             "id": "vuln-ref-01",
             "summary": "Deep dive exploit analysis report",
-            "url": "https://security-research.example.com/cve-2026-98765",
+            "url": "https://security-research.example.com/cve-1900-98765",
             "category": "external",
             "readonly": true
-          }
+          },
+          {
+            "id": "vuln-ref-02",
+            "summary": "CVE Mitre Entry",
+            "url": "https://cveawg.mitre.org/api/cve/CVE-1900-98765",
+            "category": "external",
+            "readonly": true
+          }          
         ]
       }
     ]
